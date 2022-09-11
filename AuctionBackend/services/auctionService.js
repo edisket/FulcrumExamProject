@@ -102,13 +102,13 @@ class AuctionService {
 
 
     CheckIfBidExist(propertyId) {
-        return new Promise(async (res, rej) => {
-            try {
-                await biddingTable.
-            } catch (err) {
-                rej(err);
-            }
-        })
+        // return new Promise(async (res, rej) => {
+        //     try {
+        //         await biddingTable.
+        //     } catch (err) {
+        //         rej(err);
+        //     }
+        // })
     }
 
 }
