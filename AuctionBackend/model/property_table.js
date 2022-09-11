@@ -36,6 +36,10 @@ module.exports = function(sequelize, DataTypes) {
     marketValue: {
       type: DataTypes.DECIMAL,
       allowNull: true
+    },
+    last_value: {
+      type: DataTypes.DECIMAL,
+      allowNull: true
     }
   }, {
     sequelize,

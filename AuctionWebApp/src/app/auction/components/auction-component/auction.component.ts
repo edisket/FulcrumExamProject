@@ -24,7 +24,7 @@ export class AuctionComponent{
         private route:ActivatedRoute
     ){
 
-        this.propertyList = this.auctionService.propertyData;
+        this.propertyList = AuctionService.propertyData;
 
         this.selectedProperty = this.propertyList[this.selectedIndex];
 

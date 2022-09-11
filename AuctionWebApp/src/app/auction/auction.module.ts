@@ -7,6 +7,7 @@ import { PropertyComponent } from "./components/property-component/property.comp
 import { ValueColorDirective } from "./directives/valueColor.directive";
 import { AuctionService } from "./services/auction.service";
 
+import { HttpClientModule } from '@angular/common/http';
     @NgModule({
         declarations:[
             AuctionComponent,
@@ -17,6 +18,7 @@ import { AuctionService } from "./services/auction.service";
         ],
         imports:[
             ExtPrimeng,
+            HttpClientModule,
             RouterModule.forChild([
                 {
                     path:'',
