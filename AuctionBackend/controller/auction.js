@@ -4,73 +4,106 @@ const auctionService = require('../services/auctionService')();
 
 
 
-router.get('/getAllProperty',async(req,res)=>{
-    try{
-        var data =  await auctionService.GetPropertyList();
+router.get('/getAllProperty', async (req, res) => {
+    try {
+        var data = await auctionService.GetAllProperty();
 
         res.send(data);
-    
-    }catch(err){
+
+    } catch (err) {
         res.status(500);
         res.send({
-            'is_success':false,
-            'message':err
+            'is_success': false,
+            'message': err
         })
     }
 })
-router.post('/insertbid', async(req,res)=>{
-    try{
 
-        if(req.body['propertyId'] && req.body['biddingValue']){
 
-            await auctionService.InsertBid(req.body['propertyId'], req.body['biddingValue']).catch(err=>{
-                throw(err);
+router.get('/getAuctionData', async (req, res) => {
+
+    try {
+
+        var returnData = await auctionService.GetAuctionData();
+        res.send(returnData);
+    } catch (err) {
+        res.status(500);
+        res.send({
+            'is_success': false,
+            'message': err
+        });
+    }
+})
+
+router.get('/getBiddingProperty', async(req,res)=>{
+
+    try {
+
+        var returnData = await auctionService.GetBiddingProperty();
+        res.send(returnData);
+    } catch (err) {
+        res.status(500);
+        res.send({
+            'is_success': false,
+            'message': err
+        });
+    }
+
+})
+
+router.post('/insertbid', async (req, res) => {
+    try {
+
+        if (req.body['propertyId'] && req.body['biddingValue']) {
+
+            await auctionService.InsertBid(req.body['propertyId'], req.body['biddingValue']).catch(err => {
+                throw (err);
             });
 
-            res.send({'is_success':true})
+            res.send({ 'is_success': true })
 
-        }else{
+        } else {
             res.status(400);
             res.send({
-                'is_success':false,
-                'message':'Invalid request'
+                'is_success': false,
+                'message': 'Invalid request'
             });
         }
 
 
-    }catch(err){
+    } catch (err) {
         res.status(500);
         res.send({
-            'is_success':false,
-            'message':err
+            'is_success': false,
+            'message': err
         })
     }
 })
 
-router.post('/simulateOutbid', async(req,res)=>{
+router.post('/simulateOutbid', async (req, res) => {
 
-    try{
-        if(req.body['propertyId'],req.body['biddingValue']){
+    try {
+        if (req.body['propertyId'], req.body['biddingValue']) {
             await auctionService.SimulateBidding(req.body['propertyId'], req.body['biddingValue'])
 
             res.send({
-                'is_success':true
+                'is_success': true
             })
 
-        }else{
+        } else {
             res.status(400);
             res.send({
-                'is_success':false,
-                'message':'Request is invalid'
+                'is_success': false,
+                'message': 'Request is invalid'
             })
         }
 
-       
-    }catch(err){
+
+    } catch (err) {
         res.status(500);
         res.send({
-            'is_success':false,
-            'message':err
+            'is_success': false,
+            'message': err
         })
     }
 })

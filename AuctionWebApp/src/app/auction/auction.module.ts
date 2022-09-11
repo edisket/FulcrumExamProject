@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { ExtPrimeng } from "../primeng/extprimeng.module";
 import { AuctionComponent } from "./components/auction-component/auction.component";
@@ -7,7 +7,11 @@ import { PropertyComponent } from "./components/property-component/property.comp
 import { ValueColorDirective } from "./directives/valueColor.directive";
 import { AuctionService } from "./services/auction.service";
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable, tap } from "rxjs";
+
+
+
     @NgModule({
         declarations:[
             AuctionComponent,
@@ -28,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
         ],
         providers:[
             AuctionService,
+
         ]
     })
     export class AuctioNModule{}

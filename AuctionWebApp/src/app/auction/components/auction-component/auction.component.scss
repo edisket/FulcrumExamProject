@@ -74,36 +74,39 @@ p {
 }
 
 
-.depositButton{
+.depositButton {
     height: 100%;
     border: 0;
     background-color: #ffffff00;
     line-height: 3vh;
-    span{
+
+    span {
         font-weight: lighter;
         font-size: calc(0.5vw + 0.390625vw);
-        b{
+
+        b {
             font-weight: bold;
             font-size: calc(1.5vw + 0.390625vw);
         }
     }
 }
 
-label{
+label {
     position: relative;
-    height: 100%;
+    height: 90%;
    
     text-align: center;
-    span{
+
+    span {
         width: 100%;
         font-weight: lighter;
         font-size: calc(0.5vw + 0.390625vw);
         height: 100%;
         position: absolute;
         word-break: break-all;
-        b{
+        b {
             font-weight: bold;
-            font-size: calc(1.5vw + 0.390625vw);
+            font-size: calc(2.1vw + 0.390625vw);
         }
     }
 
@@ -113,8 +116,24 @@ label{
         font-size: inherit;
         word-wrap: break-word;
         text-align: center;
+        background: transparent;
     }
 }
+
+
+// .depositInput {
+//     height: 90%;
+//     text-align: center;
+//     border: 0;
+//     background: transparent;
+    
+// }
+
+// ::placeholder{
+//     font-size: calc(1.5vw + 0.390625vw);
+// }
+
+
 
 
 

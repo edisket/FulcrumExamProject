@@ -3,10 +3,6 @@ const sequelize = require('./orm')();
 const propertyTable = require('../model/property_table')(sequelize, DataTypes);
 const biddingTable = require('../model/bidding_table')(sequelize, DataTypes);
 
-
-
-
-
 class AuctionService {
 
 
@@ -26,10 +22,9 @@ class AuctionService {
         return new Promise(async (res, rej) => {
             try {
                 await propertyTable.findAll({ raw: true }).then(x => {
-                    rej(x);
+                    res(x);
                 })
             } catch (err) {
-
                 rej(err);
             }
         })
@@ -51,7 +46,7 @@ class AuctionService {
         return new Promise(async (res, rej) => {
 
             try {
-                await sequelize.query('SELECT * VW_AuctionData', { raw: true, type: QueryTypes.SELECT }).then(x => {
+                await sequelize.query('SELECT * FROM VW_AuctionData', { raw: true, type: QueryTypes.SELECT }).then(x => {
                     res(x);
                 })
             } catch (err) {
@@ -74,7 +69,7 @@ class AuctionService {
     GetBiddingProperty() {
         return new Promise(async (res, rej) => {
             try {
-                await sequelize.query('SELECT * VW_BiddingProperty', { raw: true, type: QueryTypes.SELECT }).then(x => {
+                await sequelize.query('SELECT * FROM VW_BiddingProperty', { raw: true, type: QueryTypes.SELECT }).then(x => {
                     res(x);
                 })
             } catch (err) {
@@ -85,6 +80,10 @@ class AuctionService {
 
 
 
+    //User Insert Bidding
+    /**
+     * User should give propertyId and biddingValue
+     */
     InsertBid(propertyId, biddingValue) {
         return new Promise(async (res, rej) => {
 
@@ -136,6 +135,7 @@ class AuctionService {
     }
 
 
+    //Check If Bid Record Exists
     CheckIfBidExist(propertyId) {
         return new Promise(async (res, rej) => {
             try {
