@@ -1,0 +1,111 @@
+
+<div class="container-fluid">
+    <!--PC-->
+    <div class="row topbar">
+        <div class="d-flex justify-content-evenly align-items-center">
+
+            <button pButton pRipple icon="pi pi-book"
+                class="flex-item p-button-rounded p-button-secondary p-button-outlined"></button>
+
+            <div class="flex-item property-info ">
+                <p style="font-weight:lighter;">Own</p>
+                <h1>{{selectedProperty.propertyName}}</h1>
+                <p style="font-weight:lighter;">{{selectedProperty.propertyAddress}}</p>
+                <i class="pi pi-home"></i>
+                <i class="pi pi-home"></i>
+                <i class="pi pi-home"></i>
+            </div>
+
+            <button pButton pRipple icon="pi pi-map"
+                class="flex-item p-button-rounded p-button-secondary p-button-outlined"
+                (click)="OnDisplayImage($event)" [ngStyle]=" isDisplayImage ? {'background-color':'#8497b3', 'color':'white'  } : {'background-color':'transparent'  }"></button>
+     
+                
+            <button class="depositButton">
+                <ng-container *ngIf="!this.depositValue">
+                    <span>To <br><b>Start</b><br>Place Deposit</span>
+                </ng-container>
+            </button>
+
+            <button pButton pRipple icon="pi pi-bookmark"
+                class="flex-item p-button-rounded p-button-secondary p-button-outlined"></button>
+
+            <div class="flex-item lot-value">
+                <p style="font-weight:lighter;">Market Value ${{selectedProperty.marketValue.toLocaleString("en-US")}}</p>
+                <h1>${{selectedProperty.reservePrice.toLocaleString("en-US")}}</h1>
+                <p style="font-weight:lighter;">Reserve Price</p>
+            </div>
+            <button pButton pRipple icon="pi pi-building"
+                class="flex-item p-button-rounded p-button-secondary p-button-outlined"></button>
+        </div>
+    </div>
+    <div class="row auction-info">
+        <div class="col-3" style="background-color: white;">
+            <div class="row">
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Outbid
+                    </div>
+                    <div class="row fw-bold" style="color:red;">
+                        12
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Active
+                    </div>
+                    <div class="row fw-bold" style="color:rgb(68, 68, 68);">
+                        24
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Winning
+                    </div>
+                    <div class="row fw-bold" style="color:green;">
+                        12
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 p-0">
+            <div class="d-flex justify-content-around">
+                <div *ngFor="let data of propertyList">
+                    <property-component [name]="data.propertyName" [property-value]="data.value" [difference]="-500">
+                    </property-component>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-3" style="background-color: white;">
+            <div class="row">
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Winning
+                    </div>
+                    <div class="row fw-bold" style="color:green">
+                        $100,000
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Active
+                    </div>
+                    <div class="row fw-bold" style="color:rgb(68, 68, 68);">
+                        $100,000
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row fw-bolder">
+                        Outbid
+                    </div>
+                    <div class="row fw-bold" style="color:red">
+                        $100,000
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<imageviewer-component [is-display] = isDisplayImage [imagefilename]=selectedProperty.img (onnext)="OnNext()" (onprevious)="OnPrevious()" ></imageviewer-component>

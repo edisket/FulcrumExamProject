@@ -1,0 +1,142 @@
+.container-fluid {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.topbar {
+    font-size: calc(1vw + 0.390625vw);
+    height: 16.66666666666667%;
+    min-height: 150px;
+    margin: 0;
+    // background-color: rgb(255, 255, 255);
+    padding: 0;
+}
+
+
+.auction-info {
+    height: 4.166666666666667%;
+    min-height: 34px;
+    max-height: 65px;
+    font-size: calc(6.5px + 0.390625vw);
+    font-size: calc(0.20em + 0.5vw)
+}
+
+.property-info,
+.lot-value {
+    text-align: center;
+}
+
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.property-info h1 {
+
+    font-size: calc(1vw + 0.390625vw);
+}
+
+
+.property-info p {
+
+    font-size: calc(0.5vw + 0.390625vw);
+}
+
+
+
+.lot-value h1 {
+    font-size: calc(1.5vw + 0.390625vw);
+}
+
+.lot-value p {
+    font-size: calc(0.5vw + 0.390625vw);
+}
+
+.auction-info {
+
+    // font-size: calc(0.6em + 0.390625vw);
+
+}
+
+.fw-bolder {
+    font-weight: bolder;
+}
+
+
+.fw-bold {
+    font-weight: bold;
+}
+
+
+.depositButton{
+    height: 100%;
+    border: 0;
+    background-color: #ffffff00;
+    line-height: 3vh;
+    span{
+        font-weight: lighter;
+        font-size: calc(0.5vw + 0.390625vw);
+        b{
+            font-weight: bold;
+            font-size: calc(1.5vw + 0.390625vw);
+        }
+    }
+}
+
+label{
+    position: relative;
+    height: 100%;
+   
+    text-align: center;
+    span{
+        width: 100%;
+        font-weight: lighter;
+        font-size: calc(0.5vw + 0.390625vw);
+        height: 100%;
+        position: absolute;
+        word-break: break-all;
+        b{
+            font-weight: bold;
+            font-size: calc(1.5vw + 0.390625vw);
+        }
+    }
+
+    input {
+        height: 100%;
+        border: 0;
+        font-size: inherit;
+        word-wrap: break-word;
+        text-align: center;
+    }
+}
+
+
+
+
+
+:host {
+    ::ng-deep {
+
+        .p-button.p-button-icon-only.p-button-rounded {
+            height: 5vw;
+
+            width: 5vw;
+        }
+
+        .pi {
+            font-size: calc(1vw + 0.390625vw);
+
+        }
+
+        .p-button-icon {
+            font-size: calc(2vw + 0.390625vw);
+        }
+
+    }
+}

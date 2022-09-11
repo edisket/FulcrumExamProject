@@ -1,0 +1,14 @@
+<div class="topbar">
+    <div class="topbar-bg"></div>
+    <div class="auction-info-bg"></div>
+ 
+</div>
+<div *ngIf="isDisplayImage" class="imagecontainer">
+    <img src= 'assets/img/{{imagefilename}}'>
+</div>
+
+<div class="button-container d-flex w-100 justify-content-between">
+    <button class="pi pi-chevron-left" (click)="OnNext()"></button>
+    <button  class="pi pi-chevron-right" (click)="OnPrevious()"></button>
+</div>
+

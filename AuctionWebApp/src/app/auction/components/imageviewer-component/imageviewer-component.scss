@@ -1,0 +1,64 @@
+.imagecontainer {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+
+    
+}
+
+
+.button-container{
+    position: absolute;
+    top:55%;
+
+    button{
+        opacity: 0.5;
+        border: 0;
+        margin: 10px;
+        color: rgba(39, 39, 39, 0.555);
+        font-size: calc(3vw + 0.390625vw);
+        background-color: rgba(255, 255, 255, 0.555);
+        box-shadow: 0px 0px 5px 10px  rgba(255, 255, 255, 0.555);
+    }
+
+    button:hover{
+        transition: 0.5s;
+        opacity: 1;
+    }
+}
+
+.topbar{
+    z-index: -1;
+   
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    position: absolute;
+}
+
+
+.topbar-bg{
+    background-color: white;
+    height: 16.66666666666667%;
+    opacity: 0.8;
+    min-height: 150px;
+}
+
+.auction-info-bg{
+    background-color: white;
+    opacity: 0.5;
+    height: 4.166666666666667%;
+    min-height: 34px;
+    max-height: 65px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
