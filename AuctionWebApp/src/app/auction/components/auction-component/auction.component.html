@@ -22,7 +22,7 @@
      
             <label>
                 <span *ngIf="!depositValue">To <br> <b>Start</b><br> Place A Deposit</span>
-                <input type="text"[(ngModel)] = "depositValue"  (keypress)="(($event.charCode >= 48 && $event.charCode < 58)|| $event.charCode == 46 || $event.charCode == 44 )" (keydown)="OnKeyDownDepositField($event)">
+                <input pInputText type="text"[(ngModel)] = "depositValue" pTooltip="Input deposit value then press 'Enter'" tooltipEvent="focus" tooltipPosition="bottom"  (keypress)="(($event.charCode >= 48 && $event.charCode < 58)|| $event.charCode == 46 || $event.charCode == 44 )" (keydown)="OnKeyDownDepositField($event)">
             </label>
 
             <button pButton pRipple icon="pi pi-bookmark"

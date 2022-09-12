@@ -5,7 +5,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {ToastModule} from 'primeng/toast';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
+import {TooltipModule} from 'primeng/tooltip';
 @NgModule({
     imports:[
         ButtonModule,
@@ -14,6 +14,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
         CommonModule,
         InputNumberModule,
         ToastModule,
+        TooltipModule
+        
     ],
     exports:[
         ButtonModule,
@@ -22,6 +24,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
         CommonModule,
         InputNumberModule,
         ToastModule,
+        TooltipModule
     ]
 })
 export class ExtPrimeng{}
