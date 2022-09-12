@@ -29,6 +29,8 @@ This is guide on how you will run the whole frontend and backend. Make sure the 
     node index.js
     ```
     
+    NOTE:  <b> <i>It's important to call these commands under AuctionBackend directory because the index.js is using SQLITE for database and it use relative pathing to get the sqlite database</i> </b>
+    
 By default the backend will run in 8080, if your port 8080 is blocked you can run it with other port by doing the following step: 
 * Inside the AuctionBackend directory, open the index.js
 * Go to the line 8 and change the PORT variable with the port that you want
