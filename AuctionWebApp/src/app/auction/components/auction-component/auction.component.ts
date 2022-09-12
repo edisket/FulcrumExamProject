@@ -4,11 +4,12 @@ import { forkJoin, interval, startWith, switchMap } from "rxjs";
 import { AuctionData } from "src/app/model/AuctionData";
 import { BiddingData } from "src/app/model/BiddingData";
 import { AuctionService } from "../../services/auction.service";
-
+import { MessageService } from 'primeng/api';
 @Component({
     selector: 'auction-component',
     templateUrl: './auction.component.html',
-    styleUrls: ['./auction.component.scss']
+    styleUrls: ['./auction.component.scss'],
+    providers: [MessageService]
 })
 export class AuctionComponent implements OnInit {
 
@@ -26,7 +27,7 @@ export class AuctionComponent implements OnInit {
 
     constructor(
         private auctionService: AuctionService,
-        private route: ActivatedRoute
+        private messageService: MessageService
     ) {
         this.propertyList = AuctionService.propertyData;
         this.selectedProperty = this.propertyList[this.selectedIndex];
@@ -34,7 +35,7 @@ export class AuctionComponent implements OnInit {
 
     ngOnInit(): void {
 
-        interval(5000)
+        interval(2000)
             .pipe(
                 startWith(0),
 
@@ -59,18 +60,6 @@ export class AuctionComponent implements OnInit {
     }
 
     OnNext() {
-        this.selectedIndex++;
-        if (this.propertyList.length > 0) {
-
-            if (this.selectedIndex >= this.propertyList.length) {
-                this.selectedIndex = 0;
-            }
-
-            this.selectedProperty = this.propertyList[this.selectedIndex];
-        }
-    }
-
-    OnPrevious() {
 
         this.selectedIndex--;
         if (this.propertyList.length > 0) {
@@ -82,10 +71,29 @@ export class AuctionComponent implements OnInit {
 
         }
 
+
+
+    }
+
+    OnPrevious() {
+        this.selectedIndex++;
+        if (this.propertyList.length > 0) {
+
+            if (this.selectedIndex >= this.propertyList.length) {
+                this.selectedIndex = 0;
+            }
+
+            this.selectedProperty = this.propertyList[this.selectedIndex];
+        }
     }
 
     GetCurrentValue(propertyId: any) {
         let data = this.biddingData.find(x => x.PROPERTY_ID == propertyId)?.WINNING_BID
+
+        //If there is not bidding data yet, get the current data from property info wherein the current value = reserve price
+        if(!data){
+            data = this.propertyList.find(x=> x.id  == propertyId).current_value;
+        }
         return data ? data : 0;
     }
     GetDiffValue(propertyId: any) {
@@ -99,14 +107,31 @@ export class AuctionComponent implements OnInit {
         if (val > 0) {
 
             if (val > this.GetCurrentValue(this.selectedProperty.id)) {
+                this.auctionService.InsertBid(this.selectedProperty.id, val).subscribe(x => {
+
+                    if (x['is_success'])
+                        this.messageService.add({ severity: 'success', summary: 'Successful Bidding', detail: 'Deposit bidding success.' })
+                    
+
+                }, err => {
+                    console.log(err)
+                    this.messageService.add({ severity: 'error', summary: 'Error Bidding', detail: err.error.message })
+                })
+
+
+               
+
 
             } else {
-
+                this.messageService.add({ severity: 'error', summary: 'Invalid Bidding', detail: 'Value should be greater than current value.' })
+                
             }
 
         } else {
-
+            this.messageService.add({ severity: 'error', summary: 'Invalid Bidding', detail: 'Value should be greater than 0.' })
         }
+
+        this.depositValue = "";
     }
 
     OnKeyDownDepositField(event: any) {

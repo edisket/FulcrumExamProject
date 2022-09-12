@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <i style=" font-size: 12px;" [ngStyle]="ChangeColor(differences)" [ngClass]="ChangeIcon(differences)"></i>
-        <a class="col" href="#">{{propertyName}}</a>
+        <a class="col" [ngStyle]="selectedId == propertyId ? {'font-weight':'bolder'} : {'font-weight':'lighter'}" >{{propertyName}}</a>
     </div>
     <div class="row">
         <div class="col" [ngStyle]="ChangeColor(differences)" > ${{differences.toLocaleString("en-US")}}</div>

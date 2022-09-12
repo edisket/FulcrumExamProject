@@ -9,7 +9,8 @@ import { AuctionService } from "../../services/auction.service";
 export class PropertyComponent implements OnInit {
 
 
-    @Input('isSelected') isSelected: Boolean;
+    @Input('selectedId') selectedId: Number;
+    @Input ('propertyId')propertyId:Number;
     @Input("name") propertyName: String;
     @Input("property-value") propertyValue: Number;
     @Input("difference") differences: Number;

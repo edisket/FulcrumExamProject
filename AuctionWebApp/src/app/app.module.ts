@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuctionService } from './auction/services/auction.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 function initializeAppFactory(auctionService:AuctionService){
@@ -18,6 +18,7 @@ function initializeAppFactory(auctionService:AuctionService){
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule
   ],

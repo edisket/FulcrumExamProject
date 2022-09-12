@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
 <div class="container-fluid">
     <!--PC-->
     <div class="row topbar">
@@ -20,29 +20,15 @@
                 class="flex-item p-button-rounded p-button-secondary p-button-outlined"
                 (click)="OnDisplayImage($event)" [ngStyle]=" isDisplayImage ? {'background-color':'#8497b3', 'color':'white'  } : {'background-color':'transparent'  }"></button>
      
-                
-            <!-- <button class="depositButton">
-                <ng-container *ngIf="!this.depositValue">
-                    <span>To <br><b>Start</b><br>Place Deposit</span>
-                </ng-container>
-            </button> -->
-
-
-            <!-- <input #depositInput type="text" class="depositInput" placeholder="To Start Place A Deposit" > -->
             <label>
                 <span *ngIf="!depositValue">To <br> <b>Start</b><br> Place A Deposit</span>
                 <input type="text"[(ngModel)] = "depositValue"  (keypress)="(($event.charCode >= 48 && $event.charCode < 58)|| $event.charCode == 46 || $event.charCode == 44 )" (keydown)="OnKeyDownDepositField($event)">
-
-        
-               
             </label>
 
-   
-
-
-
             <button pButton pRipple icon="pi pi-bookmark"
-                class="flex-item p-button-rounded p-button-secondary p-button-outlined"></button>
+                class="flex-item p-button-rounded p-button-secondary p-button-outlined" 
+                [ngStyle]=" !selectedProperty.isBookmark ? {'background-color':'#8497b3', 'color':'white'  } : {'background-color':'transparent'  }"
+                (click)="selectedProperty.isBookmark = !selectedProperty.isBookmark "></button>
 
             <div class="flex-item lot-value">
                 <p style="font-weight:lighter;">Market Value ${{selectedProperty.marketValue.toLocaleString("en-US")}}</p>
@@ -85,7 +71,7 @@
         <div class="col-6 p-0">
             <div class="d-flex justify-content-around">
                 <div *ngFor="let data of propertyList">
-                    <property-component [name]="data.propertyName" [property-value]="GetCurrentValue(data.id)" [difference]="GetDiffValue(data.id)">
+                    <property-component [selectedId] = "selectedProperty.id" [propertyId] = "data.id"  [name]="data.propertyName" [property-value]="GetCurrentValue(data.id)" [difference]="GetDiffValue(data.id)">
                     </property-component>
                 </div>
             </div>
@@ -98,7 +84,7 @@
                         Winning
                     </div>
                     <div class="row fw-bold" style="color:green">
-                        $ {{auctionData.WINNING_VALUE ? auctionData.WINNING_VALUE : 0  }}
+                        $ {{auctionData.WINNING_VALUE ? auctionData.WINNING_VALUE.toLocaleString("en-US") : 0  }}
                     </div>
                 </div>
                 <div class="col">
@@ -106,7 +92,7 @@
                         Active
                     </div>
                     <div class="row fw-bold" style="color:rgb(68, 68, 68);">
-                        $ {{auctionData.ACTIVE_VALUE ? auctionData.ACTIVE_VALUE : 0}}
+                        $ {{auctionData.ACTIVE_VALUE ? auctionData.ACTIVE_VALUE.toLocaleString("en-US") : 0}}
                     </div>
                 </div>
                 <div class="col">
@@ -114,7 +100,7 @@
                         Outbid
                     </div>
                     <div class="row fw-bold" style="color:red">
-                        $ {{auctionData.OUTBID_VALUE? auctionData.OUTBID_VALUE: 0 }}
+                        $ {{auctionData.OUTBID_VALUE? auctionData.OUTBID_VALUE.toLocaleString("en-US") : 0 }}
                     </div>
                 </div>
             </div>
