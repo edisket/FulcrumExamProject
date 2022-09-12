@@ -47,4 +47,4 @@ API listen to ${PORT}
 Once you confirm its running well, you can visit the API documentation with this link : http://localhost:8080/api-docs
 
 ## Having an issue?
-In case you having an issue, please email me at edisonesguerra.developer@gmail.com <3 
+In case you having an issue, please email me at edisonesguerra.developer@gmail.com
